@@ -14,11 +14,14 @@
 
 Liked it ? Consider donating
 
+[![Awesome](https://badgen.net/badge/icon/buymeacoffee?icon=buymeacoffee&label)](https://paypal.me/dimzachar)
+
  [<img src='https://user-images.githubusercontent.com/113017737/238461927-712d744b-f879-403c-b9fe-aedaac6dcdc5.png'>](https://www.buymeacoffee.com/techietea)
 
 *ERC-20 / EVM: **0xeB16AdBa798C64CFdb9A0A70C95e1231e4ADe124***
 
 *BTC: **bc1qc0ryfatzkken7t2mx67pjreu24kj2dzu670fpg***
+
 
 ---
 [![](https://visitcount.itsvg.in/api?id=dimzachar&label=Profile%20Views&color=10&icon=6&pretty=false)](https://visitcount.itsvg.in)
