@@ -22,7 +22,6 @@ jobs:
                 repositories(first: 50, ownerAffiliations: OWNER, isFork: false, privacy: PUBLIC) {
                   nodes {
                     name
-                    description
                     defaultBranchRef {
                       target {
                         ... on Commit {
@@ -35,36 +34,57 @@ jobs:
                   }
                 }
               }
-            }' --jq '.data.user.repositories.nodes | map(select(.defaultBranchRef != null and .defaultBranchRef.target.history.totalCount > 0)) | sort_by(.defaultBranchRef.target.history.totalCount) | reverse | .[0:15]' > repos.json
+            }' --jq '.data.user.repositories.nodes | map(select(.defaultBranchRef != null and .defaultBranchRef.target.history.totalCount > 0)) | sort_by(.defaultBranchRef.target.history.totalCount) | reverse | .[0:12] | [.[].name]' > repos.json
 
-          # Generate new projects section
+          # Update projects order while preserving descriptions
           python3 << 'PYEOF'
           import json
           import re
 
           with open("repos.json", "r") as f:
-              repos = json.load(f)
+              sorted_repos = json.load(f)
 
-          # Emoji mapping (add new repos here, or they'll auto-detect)
-          emojis = {
-              "ScholarsXP": "🎓",
-              "DataTalksClub-Projects": "📊",
-              "mlops-zoomcamp": "🧠",
-              "mlzoomcamp": "🏠",
-              "xGoals-mlops": "⚽",
-              "llm_zoomcamp": "📚",
-              "langgraph-multiagent-rag": "🤖",
-              "Parthenon-RAG-Game": "🎮",
-              "bq-langgraph-analysis-agent": "📈",
-              "DataTalksClub-Timestamp-Issues": "⏱️",
-              "de-zoomcamp": "🏗️",
-              "fastapi_energy_efficiency_buildings": "⚡",
+          with open("README.md", "r") as f:
+              content = f.read()
+
+          # Extract existing projects with their full lines
+          pattern = r"## Current Projects\n(.*?)(?=\n## )"
+          match = re.search(pattern, content, flags=re.DOTALL)
+          
+          if not match:
+              print("Could not find Current Projects section")
+              exit(1)
+
+          existing_section = match.group(1)
+          
+          # Parse existing projects into a dict: repo_name -> full_line
+          existing_projects = {}
+          for line in existing_section.strip().split("\n"):
+              # Match: - emoji **[name](url)** - description
+              m = re.match(r'^- .+ \*\*\[([^\]]+)\]', line)
+              if m:
+                  repo_name = m.group(1)
+                  existing_projects[repo_name] = line
+
+          # Emoji and description mapping for new repos not in README
+          defaults = {
+              "ScholarsXP": ("🎓", "Educational platform built with TypeScript"),
+              "DataTalksClub-Projects": ("📊", "Streamlit-powered project analyzer with interactive insights"),
+              "mlops-zoomcamp": ("🧠", "MLOps Zoomcamp coursework"),
+              "mlzoomcamp": ("🏠", "ML Zoomcamp coursework"),
+              "xGoals-mlops": ("⚽", "End-to-End MLOps Pipeline for Football Analytics (xG)"),
+              "llm_zoomcamp": ("📚", "LLM Zoomcamp coursework"),
+              "langgraph-multiagent-rag": ("🤖", "Multi-agent RAG orchestration with LangGraph"),
+              "Parthenon-RAG-Game": ("🎮", "2D pixel-art RPG with AI-powered NPCs"),
+              "bq-langgraph-analysis-agent": ("📈", "BigQuery analysis agent – SQL meets AI"),
+              "DataTalksClub-Timestamp-Issues": ("⏱️", "Automates YouTube transcript timestamps for GitHub issues"),
+              "de-zoomcamp": ("🏗️", "Data Engineering Zoomcamp – pipelines, warehouses, orchestration"),
+              "fastapi_energy_efficiency_buildings": ("⚡", "FastAPI app for building energy efficiency prediction"),
           }
 
-          # Auto-detect emoji based on keywords in repo name
           def get_emoji(name):
-              if name in emojis:
-                  return emojis[name]
+              if name in defaults:
+                  return defaults[name][0]
               name_lower = name.lower()
               if any(x in name_lower for x in ["ml", "ai", "llm", "agent", "rag"]):
                   return "🤖"
@@ -74,33 +94,34 @@ jobs:
                   return "⚡"
               if any(x in name_lower for x in ["game", "play"]):
                   return "🎮"
-              if any(x in name_lower for x in ["web", "app", "ui"]):
-                  return "🌐"
-              if any(x in name_lower for x in ["learn", "course", "zoomcamp"]):
+              if any(x in name_lower for x in ["zoomcamp", "course"]):
                   return "📚"
-              if any(x in name_lower for x in ["tool", "cli", "util"]):
-                  return "🔧"
               return "📦"
 
+          # Build new projects section, preserving existing lines
           lines = ["## Current Projects\n"]
-          for repo in repos:
-              name = repo["name"]
-              emoji = get_emoji(name)
-              desc = repo.get("description") or ""
-              lines.append(f'- {emoji} **[{name}](https://github.com/dimzachar/{name})** - {desc}')
+          for repo_name in sorted_repos:
+              if repo_name in existing_projects:
+                  # Keep existing line (preserves description)
+                  lines.append(existing_projects[repo_name])
+              elif repo_name in defaults:
+                  # Use default
+                  emoji, desc = defaults[repo_name]
+                  lines.append(f'- {emoji} **[{repo_name}](https://github.com/dimzachar/{repo_name})** - {desc}')
+              else:
+                  # New repo - auto-detect emoji, empty description
+                  emoji = get_emoji(repo_name)
+                  lines.append(f'- {emoji} **[{repo_name}](https://github.com/dimzachar/{repo_name})** - ')
 
           projects_section = "\n".join(lines)
 
-          with open("README.md", "r") as f:
-              content = f.read()
-
-          pattern = r"## Current Projects\n.*?(?=\n## )"
+          # Replace in content
           content = re.sub(pattern, projects_section + "\n\n", content, flags=re.DOTALL)
 
           with open("README.md", "w") as f:
               f.write(content)
 
-          print("README updated!")
+          print("README updated! Order changed, descriptions preserved.")
           PYEOF
 
           rm repos.json
