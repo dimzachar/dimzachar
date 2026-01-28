@@ -1,0 +1,113 @@
+name: Update README Projects
+
+on:
+  schedule:
+    - cron: '0 0 1 * *' # Runs on 1st of every month
+  workflow_dispatch: # Manual trigger
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update projects order
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Get repos sorted by your commits
+          REPOS=$(gh api graphql -f query='
+            query {
+              user(login: "dimzachar") {
+                repositories(first: 50, ownerAffiliations: OWNER, isFork: false, privacy: PUBLIC) {
+                  nodes {
+                    name
+                    description
+                    defaultBranchRef {
+                      target {
+                        ... on Commit {
+                          history(author: {id: "MDQ6VXNlcjExMzAxNzczNw=="}) {
+                            totalCount
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }' --jq '.data.user.repositories.nodes | map(select(.defaultBranchRef != null and .defaultBranchRef.target.history.totalCount > 0)) | sort_by(.defaultBranchRef.target.history.totalCount) | reverse | .[0:15]')
+
+          # Generate new projects section
+          python3 << 'EOF'
+          import json
+          import re
+
+          repos = json.loads('''$REPOS''')
+
+          # Emoji mapping (add new repos here, or they'll auto-detect)
+          emojis = {
+              "ScholarsXP": "🎓",
+              "DataTalksClub-Projects": "📊",
+              "mlops-zoomcamp": "🧠",
+              "mlzoomcamp": "🏠",
+              "xGoals-mlops": "⚽",
+              "llm_zoomcamp": "📚",
+              "langgraph-multiagent-rag": "🤖",
+              "Parthenon-RAG-Game": "🎮",
+              "bq-langgraph-analysis-agent": "📈",
+              "DataTalksClub-Timestamp-Issues": "⏱️",
+              "de-zoomcamp": "🏗️",
+              "fastapi_energy_efficiency_buildings": "⚡",
+          }
+
+          # Auto-detect emoji based on keywords in repo name
+          def get_emoji(name):
+              if name in emojis:
+                  return emojis[name]
+              name_lower = name.lower()
+              if any(x in name_lower for x in ["ml", "ai", "llm", "agent", "rag"]):
+                  return "🤖"
+              if any(x in name_lower for x in ["data", "analytics", "pipeline"]):
+                  return "📊"
+              if any(x in name_lower for x in ["api", "fastapi", "backend"]):
+                  return "⚡"
+              if any(x in name_lower for x in ["game", "play"]):
+                  return "🎮"
+              if any(x in name_lower for x in ["web", "app", "ui"]):
+                  return "🌐"
+              if any(x in name_lower for x in ["learn", "course", "zoomcamp"]):
+                  return "📚"
+              if any(x in name_lower for x in ["tool", "cli", "util"]):
+                  return "🔧"
+              return "📦"
+
+          lines = ["## Current Projects\n"]
+          for repo in repos:
+              name = repo["name"]
+              emoji = get_emoji(name)
+              # Use GitHub description, fallback to empty
+              desc = repo.get("description") or ""
+              lines.append(f'- {emoji} **[{name}](https://github.com/dimzachar/{name})** - {desc}')
+
+          projects_section = "\n".join(lines)
+
+          # Read and update README
+          with open("README.md", "r") as f:
+              content = f.read()
+
+          pattern = r"## Current Projects\n.*?(?=\n## )"
+          content = re.sub(pattern, projects_section + "\n\n", content, flags=re.DOTALL)
+
+          with open("README.md", "w") as f:
+              f.write(content)
+
+          print("README updated!")
+          EOF
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add README.md
+          git diff --quiet && git diff --staged --quiet || git commit -m "chore: update projects order by commit count"
+          git push

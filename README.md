@@ -1,28 +1,70 @@
-![wave](https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&text=Hi,%I’m%20Dimitris&animation=twinkling&fontAlign=70)
+# Hi, I'm Dimitris 👋
 
-- 👀 I’m interested in mathematical modelling and data science
-- 🌱 I’m currently learning Machine Learning
-- 📫 How to reach me
+📍 **Greece** | 🤖 **AI & Data Engineer** | 🎮 **Building with LLMs**
 
-[![Portfolio](https://img.shields.io/badge/Website-46a2f1.svg?&style=for-the-badge&logo=Google-Chrome&logoColor=white&link=https://zacharenakis.super.site/)](https://zacharenakis.super.site/)
-[![Linkedin: zacharenakis](https://img.shields.io/badge/-Connect-blue?style=for-the-badge&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/zacharenakis)](https://www.linkedin.com/in/zacharenakis)
-[![GitHub](https://img.shields.io/github/followers/dimzachar?logo=GitHub&style=for-the-badge)](https://github.com/dimzachar)
+[![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
+[![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://typescriptlang.org)
+[![LangChain](https://img.shields.io/badge/-LangChain-1C3C3C?style=flat-square&logo=chainlink&logoColor=white)](https://langchain.com)
+[![OpenAI](https://img.shields.io/badge/-OpenAI-412991?style=flat-square&logo=openai&logoColor=white)](https://openai.com)
+[![Docker](https://img.shields.io/badge/-Docker-2496ED?style=flat-square&logo=docker&logoColor=white)](https://docker.com)
+[![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)](https://postgresql.org)
+[![Streamlit](https://img.shields.io/badge/-Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white)](https://streamlit.io)
+[![BigQuery](https://img.shields.io/badge/-BigQuery-669DF6?style=flat-square&logo=googlebigquery&logoColor=white)](https://cloud.google.com/bigquery)
+[![dbt](https://img.shields.io/badge/-dbt-FF694B?style=flat-square&logo=dbt&logoColor=white)](https://getdbt.com)
 
-[![](https://raw.githubusercontent.com/dimzachar/github-profile-summary-cards/master/profile-summary-card-output/nord_dark/0-profile-details.svg)](https://github.com/vn7n24fzkq/github-profile-summary-cards)
-[![](https://raw.githubusercontent.com/dimzachar/github-profile-summary-cards/master/profile-summary-card-output/nord_dark/1-repos-per-language.svg)](https://github.com/vn7n24fzkq/github-profile-summary-cards) [![](https://raw.githubusercontent.com/dimzachar/github-profile-summary-cards/master/profile-summary-card-output/nord_dark/2-most-commit-language.svg)](https://github.com/vn7n24fzkq/github-profile-summary-cards)
-[![](https://raw.githubusercontent.com/dimzachar/github-profile-summary-cards/master/profile-summary-card-output/nord_dark/3-stats.svg)](https://github.com/vn7n24fzkq/github-profile-summary-cards) [![](https://raw.githubusercontent.com/dimzachar/github-profile-summary-cards/master/profile-summary-card-output/nord_dark/4-productive-time.svg)](https://github.com/vn7n24fzkq/github-profile-summary-cards)
+> Deep in the AI/ML rabbit hole – building RAG systems, multi-agent workflows, and data pipelines. DataTalksClub contributor turning complex data problems into elegant solutions.
 
-Liked it ? Consider donating
+## Current Projects
 
-[![Awesome](https://badgen.net/badge/icon/buymeacoffee?icon=buymeacoffee&label)](https://paypal.me/dimzachar)
+- 🎓 **[ScholarsXP](https://github.com/dimzachar/ScholarsXP)** - Educational platform built with TypeScript
+- 📊 **[DataTalksClub-Projects](https://github.com/dimzachar/DataTalksClub-Projects)** - Streamlit-powered project analyzer with interactive insights
+- 🧠 **[mlops-zoomcamp](https://github.com/dimzachar/mlops-zoomcamp)** - MLOps Zoomcamp coursework
+- 🏠 **[mlzoomcamp](https://github.com/dimzachar/mlzoomcamp)** - ML Zoomcamp coursework
+- ⚽ **[xGoals-mlops](https://github.com/dimzachar/xGoals-mlops)** - End-to-End MLOps Pipeline for Football Analytics (xG)
+- 📚 **[llm_zoomcamp](https://github.com/dimzachar/llm_zoomcamp)** - LLM Zoomcamp coursework
+- 🤖 **[langgraph-multiagent-rag](https://github.com/dimzachar/langgraph-multiagent-rag)** - Multi-agent RAG orchestration with LangGraph
+- 🎮 **[Parthenon-RAG-Game](https://github.com/dimzachar/Parthenon-RAG-Game)** - 2D pixel-art RPG with AI-powered NPCs
+- 📈 **[bq-langgraph-analysis-agent](https://github.com/dimzachar/bq-langgraph-analysis-agent)** - BigQuery analysis agent – SQL meets AI
+- ⏱️ **[DataTalksClub-Timestamp-Issues](https://github.com/dimzachar/DataTalksClub-Timestamp-Issues)** - Automates YouTube transcript timestamps for GitHub issues
+- 🏗️ **[de-zoomcamp](https://github.com/dimzachar/de-zoomcamp)** - Data Engineering Zoomcamp – pipelines, warehouses, orchestration
+- ⚡ **[fastapi_energy_efficiency_buildings](https://github.com/dimzachar/fastapi_energy_efficiency_buildings)** - FastAPI app for building energy efficiency prediction
 
- [<img src='https://user-images.githubusercontent.com/113017737/238461927-712d744b-f879-403c-b9fe-aedaac6dcdc5.png'>](https://www.buymeacoffee.com/techietea)
+## What I'm Doing
 
-*ERC-20 / EVM: **0xeB16AdBa798C64CFdb9A0A70C95e1231e4ADe124***
+- **Building AI agents** - Multi-agent systems with LangGraph for real-world automation
+- **Data Engineering** - End-to-end pipelines with modern stack (dbt, Airflow, BigQuery)
+- **Open Source** - Contributing to DataTalksClub ecosystem
+- **Learning in public** - Documenting the journey through zoomcamps and projects
 
-*BTC: **bc1qc0ryfatzkken7t2mx67pjreu24kj2dzu670fpg***
+## Connect
 
+[![Portfolio](https://img.shields.io/badge/-@zacharenakis-46a2f1?style=flat-square&logo=Google-Chrome&logoColor=white)](https://zacharenakis.super.site/)
+[![LinkedIn](https://img.shields.io/badge/-zacharenakis-0077B5?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/zacharenakis)
+[![GitHub](https://img.shields.io/badge/-Follow-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/dimzachar)
 
 ---
-[![](https://visitcount.itsvg.in/api?id=dimzachar&label=Profile%20Views&color=10&icon=6&pretty=false)](https://visitcount.itsvg.in)
 
+### Philosophy
+
+> "Learn by building" – I believe the best way to master something is to ship real projects. Currently exploring how AI agents change everything about data work.
+
+---
+
+### Support
+
+Liked my work? Consider buying me a coffee ☕
+
+[![Buy Me A Coffee](https://img.shields.io/badge/-Buy%20Me%20A%20Coffee-FFDD00?style=flat-square&logo=buy-me-a-coffee&logoColor=black)](https://www.buymeacoffee.com/techietea)
+[![PayPal](https://img.shields.io/badge/-PayPal-00457C?style=flat-square&logo=paypal&logoColor=white)](https://paypal.me/dimzachar)
+
+<details>
+<summary>Crypto</summary>
+
+- **ERC-20 / EVM:** `0xeB16AdBa798C64CFdb9A0A70C95e1231e4ADe124`
+- **BTC:** `bc1qc0ryfatzkken7t2mx67pjreu24kj2dzu670fpg`
+
+</details>
+
+---
+
+![Profile Views](https://komarev.com/ghpvc/?username=dimzachar&color=blue&style=flat-square)
