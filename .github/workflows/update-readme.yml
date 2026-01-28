@@ -11,12 +11,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Update projects order
+      - name: Fetch repos and update README
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Get repos sorted by your commits
-          REPOS=$(gh api graphql -f query='
+          # Get repos sorted by your commits and save to file
+          gh api graphql -f query='
             query {
               user(login: "dimzachar") {
                 repositories(first: 50, ownerAffiliations: OWNER, isFork: false, privacy: PUBLIC) {
@@ -35,14 +35,15 @@ jobs:
                   }
                 }
               }
-            }' --jq '.data.user.repositories.nodes | map(select(.defaultBranchRef != null and .defaultBranchRef.target.history.totalCount > 0)) | sort_by(.defaultBranchRef.target.history.totalCount) | reverse | .[0:15]')
+            }' --jq '.data.user.repositories.nodes | map(select(.defaultBranchRef != null and .defaultBranchRef.target.history.totalCount > 0)) | sort_by(.defaultBranchRef.target.history.totalCount) | reverse | .[0:15]' > repos.json
 
           # Generate new projects section
-          python3 << 'EOF'
+          python3 << 'PYEOF'
           import json
           import re
 
-          repos = json.loads('''$REPOS''')
+          with open("repos.json", "r") as f:
+              repos = json.load(f)
 
           # Emoji mapping (add new repos here, or they'll auto-detect)
           emojis = {
@@ -85,13 +86,11 @@ jobs:
           for repo in repos:
               name = repo["name"]
               emoji = get_emoji(name)
-              # Use GitHub description, fallback to empty
               desc = repo.get("description") or ""
               lines.append(f'- {emoji} **[{name}](https://github.com/dimzachar/{name})** - {desc}')
 
           projects_section = "\n".join(lines)
 
-          # Read and update README
           with open("README.md", "r") as f:
               content = f.read()
 
@@ -102,7 +101,9 @@ jobs:
               f.write(content)
 
           print("README updated!")
-          EOF
+          PYEOF
+
+          rm repos.json
 
       - name: Commit changes
         run: |
