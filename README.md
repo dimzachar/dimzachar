@@ -28,15 +28,16 @@
 - 🎓 **[ScholarsXP](https://github.com/dimzachar/ScholarsXP)** - Educational platform built with TypeScript
 - 📊 **[DataTalksClub-Projects](https://github.com/dimzachar/DataTalksClub-Projects)** - Streamlit-powered project analyzer with interactive insights
 - 🧠 **[mlops-zoomcamp](https://github.com/dimzachar/mlops-zoomcamp)** - MLOps Zoomcamp coursework
+- 🤖 **[mlzoomcamp_projects](https://github.com/dimzachar/mlzoomcamp_projects)** - 
 - 🏠 **[mlzoomcamp](https://github.com/dimzachar/mlzoomcamp)** - ML Zoomcamp coursework
 - ⚽ **[xGoals-mlops](https://github.com/dimzachar/xGoals-mlops)** - End-to-End MLOps Pipeline for Football Analytics (xG)
 - 📚 **[llm_zoomcamp](https://github.com/dimzachar/llm_zoomcamp)** - LLM Zoomcamp coursework
+- 📦 **[week2-devops](https://github.com/dimzachar/week2-devops)** - 
 - 🤖 **[langgraph-multiagent-rag](https://github.com/dimzachar/langgraph-multiagent-rag)** - Multi-agent RAG orchestration with LangGraph
 - 🎮 **[Parthenon-RAG-Game](https://github.com/dimzachar/Parthenon-RAG-Game)** - 2D pixel-art RPG with AI-powered NPCs
+- 📦 **[raki-Git-Shop](https://github.com/dimzachar/raki-Git-Shop)** - 
 - 📈 **[bq-langgraph-analysis-agent](https://github.com/dimzachar/bq-langgraph-analysis-agent)** - BigQuery analysis agent – SQL meets AI
-- ⏱️ **[DataTalksClub-Timestamp-Issues](https://github.com/dimzachar/DataTalksClub-Timestamp-Issues)** - Automates YouTube transcript timestamps for GitHub issues
-- 🏗️ **[de-zoomcamp](https://github.com/dimzachar/de-zoomcamp)** - Data Engineering Zoomcamp – pipelines, warehouses, orchestration
-- ⚡ **[fastapi_energy_efficiency_buildings](https://github.com/dimzachar/fastapi_energy_efficiency_buildings)** - FastAPI app for building energy efficiency prediction
+
 
 ## What I'm Doing
 
