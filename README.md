@@ -35,8 +35,8 @@
 - 📊 **[thalassa-analytics](https://github.com/dimzachar/thalassa-analytics)** - 
 - 📦 **[campawn](https://github.com/dimzachar/campawn)** - 
 - 📚 **[llm_zoomcamp](https://github.com/dimzachar/llm_zoomcamp)** - LLM Zoomcamp coursework
+- 📦 **[european-power-observatory](https://github.com/dimzachar/european-power-observatory)** - 
 - 📦 **[week2-devops](https://github.com/dimzachar/week2-devops)** - 
-- 🤖 **[langgraph-multiagent-rag](https://github.com/dimzachar/langgraph-multiagent-rag)** - Multi-agent RAG orchestration with LangGraph
 
 
 ## What I'm Doing
