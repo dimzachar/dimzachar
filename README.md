@@ -36,7 +36,7 @@
 - 📦 **[campawn](https://github.com/dimzachar/campawn)** - 
 - 📚 **[llm_zoomcamp](https://github.com/dimzachar/llm_zoomcamp)** - LLM Zoomcamp coursework
 - 📦 **[european-power-observatory](https://github.com/dimzachar/european-power-observatory)** - 
-- 📦 **[week2-devops](https://github.com/dimzachar/week2-devops)** - 
+- 📦 **[week2-devops](https://github.com/dimzachar/week2-devops)** -
 
 
 ## What I'm Doing
