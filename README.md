@@ -25,7 +25,6 @@
 
 ## Current Projects
 
-- 🎓 **[ScholarsXP](https://github.com/dimzachar/ScholarsXP)** - Educational platform built with TypeScript
 - 📊 **[DataTalksClub-Projects](https://github.com/dimzachar/DataTalksClub-Projects)** - Streamlit-powered project analyzer with interactive insights
 - 🧠 **[mlops-zoomcamp](https://github.com/dimzachar/mlops-zoomcamp)** - MLOps Zoomcamp coursework
 - 🤖 **[mlzoomcamp_projects](https://github.com/dimzachar/mlzoomcamp_projects)** - 
@@ -37,6 +36,7 @@
 - 📚 **[llm_zoomcamp](https://github.com/dimzachar/llm_zoomcamp)** - LLM Zoomcamp coursework
 - 📦 **[european-power-observatory](https://github.com/dimzachar/european-power-observatory)** - 
 - 📦 **[week2-devops](https://github.com/dimzachar/week2-devops)** -
+- 🤖 **[langgraph-multiagent-rag](https://github.com/dimzachar/langgraph-multiagent-rag)** - Multi-agent RAG orchestration with LangGraph
 
 
 ## What I'm Doing
